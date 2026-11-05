@@ -1,1 +1,0 @@
-import{t as e}from"./jsx-runtime-DsKLSDJq.js";import{t}from"./route-recovery-B5CrdHyF.js";var n=e(),r=()=>(0,n.jsx)(t,{});export{r as notFoundComponent};

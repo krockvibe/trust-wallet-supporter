@@ -1,1 +1,0 @@
-import{r as e}from"./chunk-QTnfLwEv.js";import{t}from"./react-xd4aoMiW.js";var n=e(t(),1),r=n.createContext(null);function i(e){return n.useContext(r)}export{r as n,i as t};
