@@ -1,123 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trust Wallet Supporter - 24/7 Help Center</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    :root { --primary: #667eea; --secondary: #764ba2; --accent: #4a90e2; --white: #ffffff; --dark: #2d3436; --light: #adb5bd; --success: #28a745; --info: #17a2b8; }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: var(--primary); min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--white); }
-    .header { width: 100%; background: rgba(0, 0, 0, 0.3); backdrop-filter: blur(10px); padding: 1rem 2rem; position: fixed; top: 0; left: 0; right: 0; z-index: 100; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
-    .nav-container { max-width: 1200px; width: 100%; display: flex; justify-content: space-between; align-items: center; }
-    .logo { display: flex; align-items: center; gap: 0.5rem; }
-    .logo-icon { width: 40px; height: 40px; background: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--primary); font-weight: bold; font-size: 16px; }
-    .nav-links a { color: var(--white); text-decoration: none; margin-left: 1.5rem; font-size: 0.9rem; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--accent); }
-    .hero { max-width: 1200px; width: 100%; padding: 8rem 2rem 2rem; text-align: center; }
-    .hero-badge { display: inline-block; background: var(--white); color: var(--primary); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; margin-bottom: 1rem; margin-top: 1rem; }
-    .hero h1 { font-size: 2.5rem; margin-bottom: 1rem; line-height: 1.2; }
-    .hero p { font-size: 1.2rem; opacity: 0.9; max-width: 600px; margin: 0 auto 2rem; line-height: 1.6; }
-    .features-grid { max-width: 1200px; width: 100%; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; justify-content: center; }
-    .feature-card { background: rgba(255, 255, 255, 0.1); padding: 2rem; border-radius: 15px; backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); transition: transform 0.3s, background 0.3s; }
-    .feature-card:hover { transform: translateY(-5px); background: rgba(255, 255, 255, 0.15); }
-    .feature-icon { width: 50px; height: 50px; background: var(--white); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; font-size: 20px; color: var(--primary); }
-    .feature-card h3 { margin-bottom: 0.5rem; font-size: 1.2rem; }
-    .feature-card p { font-size: 0.9rem; opacity: 0.8; line-height: 1.4; }
-    .section { max-width: 1200px; width: 100%; padding: 3rem 2rem; text-align: center; }
-    .section h2 { margin-bottom: 2rem; font-size: 2rem; }
-    .section p { opacity: 0.8; max-width: 600px; margin: 0 auto; line-height: 1.6; }
-    .quick-support { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem; }
-    .quick-btn { background: var(--white); color: var(--primary); padding: 0.8rem 1.2rem; border-radius: 25px; text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: transform 0.2s, box-shadow 0.2s; border: none; cursor: pointer; }
-    .quick-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); }
-    .quick-btn:active { transform: translateY(0); }
-    .issues-list { max-width: 1200px; width: 100%; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 2rem; justify-content: center; }
-    .issue-item { background: rgba(255, 255, 255, 0.1); padding: 1.5rem; border-radius: 10px; backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); transition: background 0.3s; }
-    .issue-item:hover { background: rgba(255, 255, 255, 0.15); }
-    .issue-item h4 { margin-bottom: 0.5rem; }
-    .issue-item p { font-size: 0.85rem; opacity: 0.7; line-height: 1.4; }
-    .contact-methods { max-width: 1200px; width: 100%; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 2rem; justify-content: center; }
-    .contact-method { background: rgba(255, 255, 255, 0.1); padding: 2rem; border-radius: 15px; backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); transition: transform 0.3s; }
-    .contact-method:hover { transform: translateY(-3px); }
-    .contact-method-icon { width: 60px; height: 60px; background: var(--white); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 24px; color: var(--primary); }
-    .contact-method h3 { margin-bottom: 0.5rem; }
-    .contact-method p { font-size: 0.9rem; opacity: 0.8; }
-    .contact-method a { color: var(--accent); text-decoration: none; font-weight: 500; display: inline-block; margin-top: 0.5rem; }
-    .contact-method a:hover { text-decoration: underline; }
-    .faq-item { background: rgba(255, 255, 255, 0.1); padding: 1.5rem; border-radius: 10px; margin: 1rem 0; backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); cursor: pointer; transition: background 0.3s; }
-    .faq-item:hover { background: rgba(255, 255, 255, 0.15); }
-    .faq-question { display: flex; justify-content: between; align-items: center; margin-bottom: 0.5rem; }
-    .faq-question h4 { font-size: 1rem; }
-    .faq-question svg { width: 20px; height: 20px; transition: transform 0.3s; }
-    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; font-size: 0.9rem; opacity: 0; color: rgba(255, 255, 255, 0.7); }
-    .faq-answer.open { max-height: 200px; opacity: 1; }
-    .faq-answer.open + .faq-question svg { transform: rotate(180deg); }
-    .live-chat-btn { position: fixed; bottom: 2rem; right: 2rem; background: var(--accent); color: var(--white); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 5px 20px rgba(74, 144, 226, 0.4); z-index: 100; transition: transform 0.3s; }
-    .live-chat-btn:hover { transform: scale(1.1); }
-    .live-chat-btn:hover .chat-icon { animation: pulse 1.5s infinite; }
-    .chat-icon { width: 24px; height: 24px; }
-    @keyframes pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(74, 144, 226, 0.7); } 50% { box-shadow: 0 0 20px 10px rgba(74, 144, 226, 0.5); } }
-    @media (max-width: 768px) { .menu-toggle { display: flex; flex-direction: column; cursor: pointer; gap: 5px; } .menu-toggle span { width: 25px; height: 3px; background: var(--white); transition: all 0.3s; } .nav-links { position: fixed; top: 0; right: -100%; width: 70%; max-width: 300px; height: 100vh; background: var(--dark); flex-direction: column; justify-content: center; align-items: center; transition: right 0.3s; } .nav-links.active { right: 0; } .nav-links a { width: 100%; padding: 1rem 2rem; margin: 0.5rem 0; text-align: center; } .hero h1 { font-size: 2rem; } .floating-stats, .live-chat-btn { display: none; } }
-  </style>
+  <meta charSet="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Trust wallet supporter Support — 24/7 Help Center</title>
+  <meta name="author" content="Lovable"/>
+  <meta name="description" content="Official Trust wallet supporter support center. Get instant help from our 24/7 team."/>
+  <meta property="og:title" content="Trust wallet supporter Support — 24/7 Help Center"/>
+  <meta property="og:description" content="Official Trust wallet supporter support center. Get instant help from our 24/7 team."/>
+  <meta property="og:site_name" content="Trust wallet supporter"/>
+  <meta property="og:type" content="website"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Trust wallet supporter Support — 24/7 Help Center"/>
+  <meta name="twitter:description" content="Official Trust wallet supporter support center. Get instant help from our 24/7 team."/>
+  <meta property="og:image" content="https://obuaukxtqgplawykplii.supabase.co/storage/v1/object/sign/logos/a5f55885-066a-44a4-93d0-845d62863ee9.jpeg?token=eyJraWQiOiJlYjI4YzhjOC01ZGE0LTQ1YmMtOTljOC1jYzUxODhlMzc1NmQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJsb2dvcy9hNWY1NTg4NS0wNjZhLTQ0YTQtOTNkMC04NDVkNjI4NjNlZTkuanBlZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3OTM4MTk5MDgsImV4cCI6MjEwOTE3OTkwOH0.xzeSQgSDl77KJev8jviMLeXGDvDNLdHaGWikivoABcE"/>
+  <meta name="twitter:image" content="https://obuaukxtqgplawykplii.supabase.co/storage/v1/object/sign/logos/a5f55885-066a-44a4-93d0-845d62863ee9.jpeg?token=eyJraWQiOiJlYjI4YzhjOC01ZGE0LTQ1YmMtOTljOC1jYzUxODhlMzc1NmQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJsb2dvcy9hNWY1NTg4NS0wNjZhLTQ0YTQtOTNkMC04NDVkNjI4NjNlZTkuanBlZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3OTM4MTk5MDgsImV4cCI6MjEwOTE3OTkwOH0.xzeSQgSDl77KJev8jviMLeXGDvDNLdHaGWikivoABcE"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/>
+  <link rel="icon" href="https://obuaukxtqgplawykplii.supabase.co/storage/v1/object/sign/logos/a5f55885-066a-44a4-93d0-845d62863ee9.jpeg?token=eyJraWQiOiJlYjI4YzhjOC01ZGE0LTQ1YmMtOTljOC1jYzUxODhlMzc1NmQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJsb2dvcy9hNWY1NTg4NS0wNjZhLTQ0YTQtOTNkMC04NDVkNjI4NjNlZTkuanBlZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3OTM4MTk5MDgsImV4cCI6MjEwOTE3OTkwOH0.xzeSQgSDl77KJev8jviMLeXGDvDNLdHaGWikivoABcE"/>
 </head>
-<body>
-
-  <div class="floating-stats">
-    <div class="stat"><div class="stat-number">60K+</div><div class="stat-label">Users</div></div>
-    <div class="stat"><div class="stat-number">24/7</div><div class="stat-label">Support</div></div>
-    <div class="stat"><div class="stat-number">98%</div><div class="stat-label">Satisfaction</div></div>
+<body style="padding:40px;text-align:center; font-family: 'DM Sans', sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; display: flex; align-items: center; justify-content: center;">
+  <div style="padding:40px; text-align: center; background: white; border-radius: 15px; max-width: 400px; margin: 20px;">
+    <div style="width: 80px; height: 80px; background: #4a90e2; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; color: white; font-weight: bold; font-size: 24px;">TW</div>
+    <h1 style="font-size: 2rem; margin-bottom: 1rem; color: #2d3436;">Trust wallet supporter Support</h1>
+    <p style="color: #666; margin-bottom: 2rem; font-size: 1rem;">24/7 Help Center</p>
+    <div style="font-size: 0.9rem; color: #666;">Loading…</div>
   </div>
-
-  <header class="header">
-    <div class="nav-container">
-      <div class="logo"><div class="logo-icon">TW</div></div>
-      <nav class="nav-links">
-        <a href="#quick-support">Quick Support</a>
-        <a href="#common-issues">Common Issues</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </nav>
-      <div class="menu-toggle" id="mobileMenu">
-        <span></span><span></span><span></span>
-      </div>
-    </div>
-  </header>
-
-  <section class="hero">
-    <div class="hero-badge">24/7 Help Center</div>
-    <h1>Trust Wallet Supporter</h1>
-    <p>Trusted support, every day. We're here for you - reach out anytime using the options below. Expert assistance for all your wallet concerns.</p>
-    <div class="quick-support"><a href="#common-issues" class="quick-btn">Common Issues</a><a href="#contact" class="quick-btn">Contact Support</a><a href="#faq" class="quick-btn">FAQ</a></div>
-  </section>
-
-  <div class="features-grid">
-    <div class="feature-card"><div class="feature-icon">🔒</div><h3>Secure</h3><p>Bank-level encryption and protection for all transactions and conversations</p></div>
-    <div class="feature-card"><div class="feature-icon">⚡</div><h3>Fast Reply</h3><p>Average response time under 2 minutes for live chat support</p></div>
-    <div class="feature-card"><div class="feature-icon">👤</div><h3>Verified Agents</h3><p>All support agents are verified and trained to handle wallet issues</p></div>
-    <div class="feature-card"><div class="feature-icon">🌍</div><h3>Worldwide</h3><p>Support available in multiple languages across 150+ countries</p></div>
-    <div class="feature-card"><div class="feature-icon">💰</div><h3>60K+ Users</h3><p>Trusted by over 60,000 wallet users worldwide</p></div>
-    <div class="feature-card"><div class="feature-icon">⭐</div><h3>Top Rated</h3><p>4.8/5 star rating from our user community</p></div>
-  </div>
-
-  <section class="section" id="quick-support"><h2>Quick Support</h2><p>Select a topic to get started</p><div class="quick-support"><a href="#issues-deposit" class="quick-btn">Deposit Issues</a><a href="#issues-withdrawal" class="quick-btn">Withdrawal Issues</a><a href="#issues-login" class="quick-btn">Login Problems</a><a href="#issues-security" class="quick-btn">Security Concerns</a><a href="#general-inquiry" class="quick-btn">General Inquiry</a></div></section>
-
-  <section class="section" id="common-issues"><h2>Common Issues</h2><p>Frequently reported problems and solutions</p><div class="issues-list"><div class="issue-item"><h4>Lost Access to Wallet</h4><p>Forgot password or lost recovery phrase. Steps to regain access safely.</p></div><div class="issue-item"><h4>Transaction Delayed</h4><p>Payment received but funds not appearing in wallet. Expected timelines.</p></div><div class="issue-item"><h4>Account Security</h4><p>Suspicious activity or potential hack. Immediate security measures.</p></div><div class="issue-item"><h4>Swap Not Working</h4><p>Token swap failed or stuck. Troubleshooting steps.</p></div><div class="issue-item"><h4>App Not Opening</h4><p>Application crashing or failing to launch. Quick fixes.</p></div></div></section>
-
-  <section class="section" id="about"><h2>About Trust Wallet Supporter</h2><div class="section p"><p>Trusted support, every day. We're here for you - reach out anytime using the options below. Our mission is to provide reliable, friendly support so you can get back to what matters most.</p><p>Our support team is available 24 hours a day, 7 days a week, ensuring that help is always just a click away regardless of your timezone or location.</p></div></section>
-
-  <section class="section" id="faq"><h2>Frequently Asked Questions</h2><p>Quick answers to common questions</p><div class="faq-item" onclick="toggleFAQ(this)"><div class="faq-question"><h4>Is talking to support free?</h4><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 10l5 5 5-5M7 14l5-5 5-5"/></svg></div><div class="faq-answer">Yes — talking to our support team costs nothing. All assistance provided through our channels is completely free of charge.</div></div><div class="faq-item" onclick="toggleFAQ(this)"><div class="faq-question"><h4>Are conversations confidential?</h4><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 10l5 5 5-5M7 14l5-5 5-5"/></svg></div><div class="faq-answer">Yes. All conversations with our agents are confidential and encrypted. We prioritize your privacy and security.</div></div><div class="faq-item" onclick="toggleFAQ(this)"><div class="faq-question"><h4>How fast is the response?</h4><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 10l5 5 5-5M7 14l5-5 5-5"/></svg></div><div class="faq-answer">Live chat replies are typically within 1–2 minutes. WhatsApp and Telegram responses within 10 minutes.</div></div><div class="faq-item" onclick="toggleFAQ(this)"><div class="faq-question"><h4>What support channels are available?</h4><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 10l5 5 5-5M7 14l5-5 5-5"/></svg></div><div class="faq-answer">Live chat on website, WhatsApp, Telegram, and email support available.</div></div></section>
-
-  <section class="section" id="contact"><h2>Contact Support</h2><p>Choose how you'd like to reach us</p><div class="contact-methods"><div class="contact-method"><div class="contact-method-icon">💬</div><h3>Live Chat</h3><p>Instant support directly through this website</p><a href="#">Start Chat</a></div><div class="contact-method"><div class="contact-method-icon">📱</div><h3>WhatsApp</h3><p>Quick responses within 10 minutes</p><a href="https://wa.me/+1234567890" target="_blank">+1 (234) 567-890</a></div><div class="contact-method"><div class="contact-method-icon">✈️</div><h3>Telegram</h3><p>Secure messaging with agent support</p><a href="https://t.me/trustwalletsupport" target="_blank">@trustwalletsupport</a></div></div></section>
-
-  <a href="#" class="live-chat-btn" id="liveChatBtn"><svg class="chat-icon" viewBox="0 0 24 24" fill="white"><path d="M2 3h2v13H2V3zm6 5h2v10H6V5zm6 5h2v6h-2v-6zm5-17l-5 5h12l-5 5V7l-5-5zm5 11h5v5h-5v-5z"/></svg>Chat</a>
-
   <script>
-    function toggleFAQ(item) { const answer = item.querySelector('.faq-answer'); const svg = item.querySelector('.faq-question svg'); answer.classList.toggle('open'); if (svg) { svg.style.transform = answer.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)'; } }
-    const mobileMenu = document.getElementById('mobileMenu'); const navLinks = document.querySelector('.nav-links'); mobileMenu.addEventListener('click', () => { navLinks.classList.toggle('active'); });
-    const liveChatBtn = document.getElementById('liveChatBtn'); if (liveChatBtn) { liveChatBtn.addEventListener('click', (e) => { e.preventDefault(); alert('Live chat initiated! Our support team will connect shortly.'); }); }
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => { anchor.addEventListener('click', function (e) { e.preventDefault(); const target = document.querySelector(this.getAttribute('href')); if (target) { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); } }); });
-    window.addEventListener('scroll', () => { const header = document.querySelector('.header'); if (window.scrollY > 50) { header.style.background = 'rgba(0, 0, 0, 0.5)'; } else { header.style.background = 'rgba(0, 0, 0, 0.3)'; } });
+    // Simulate the dynamic loading from the original
+    setTimeout(() => {
+      document.querySelector('div').innerHTML = '<p style="color: #666; margin: 2rem 0; font-size: 1rem;">Support ready!</p><a href="#" style="background: #667eea; color: white; padding: 10px 20px; border-radius: 25px; text-decoration: none; font-weight: 500;">Get Support</a>';
+    }, 2000);
   </script>
-
 </body>
 </html>
