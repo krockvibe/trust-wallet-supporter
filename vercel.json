@@ -1,6 +1,1 @@
-{
- "build": null,
- "headers": [],
- "cleanUrls": true,
- "file": "index.html"
-}
+{"framework": "html", "buildCommand": "none", "outputDirectory": "."}
